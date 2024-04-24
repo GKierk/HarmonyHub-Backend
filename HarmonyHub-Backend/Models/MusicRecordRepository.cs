@@ -2,7 +2,22 @@
 
 public class MusicRecordRepository
 {
-    public List<MusicRecord> MusicRecords { get; set; } = new List<MusicRecord>();
+    public List<MusicRecord>? MusicRecords { get; set; }
+
+    public MusicRecordRepository()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        MusicRecords = new List<MusicRecord>
+        {
+            new MusicRecord { Id = 1, Title = "Piano Concerto no 2", Artist = "Rachmaninoff", PublicationYear = 1958, Duration = 2280 },
+            new MusicRecord { Id = 2, Title = "Meteora" , Artist = "Linkin Park" , PublicationYear = 2003 , Duration = 2160}
+
+        };
+    }
 
     public MusicRecord Create(MusicRecord musicRecord)
     {
