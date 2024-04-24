@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HarmonyHub_Backend.Models;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +9,13 @@ namespace HarmonyHub_Backend.Controllers
     [ApiController]
     public class HarmonyHubController : ControllerBase
     {
+        private MusicRecordRepository musicRecordRepository = new MusicRecordRepository();
+
         // GET: api/<HarmonyHubController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<MusicRecord> Get()
         {
-            return new string[] { "value1", "value2" };
+            return musicRecordRepository.Read(); 
         }
 
         // GET api/<HarmonyHubController>/5
@@ -24,8 +27,9 @@ namespace HarmonyHub_Backend.Controllers
 
         // POST api/<HarmonyHubController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] MusicRecord value)
         {
+            musicRecordRepository.Create(value);
         }
 
         // PUT api/<HarmonyHubController>/5
