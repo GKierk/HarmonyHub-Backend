@@ -40,4 +40,17 @@ public class MusicRecordRepository
 
         return recordToUpdate;
     }
+    
+    public MusicRecord? Delete(int id)
+    {
+        MusicRecord? recordToDelete = MusicRecords.Find(r => r.Id == id);
+
+        if (recordToDelete == null)
+        {
+            return null;
+        }
+
+        MusicRecords.Remove(recordToDelete);
+        return recordToDelete;
+    }
 }
