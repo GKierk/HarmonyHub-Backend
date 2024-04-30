@@ -18,7 +18,7 @@ namespace HarmonyHub_Backend.Controllers
 
         // GET: api/<HarmonyHubController>
         [HttpGet]
-        public IEnumerable<MusicRecord> Get()
+        public IEnumerable<MusicRecord> Get( string? title=null, string? artist=null)
         {
             return musicRecordRepository.Read(); 
         }
