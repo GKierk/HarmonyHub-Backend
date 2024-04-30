@@ -39,14 +39,16 @@ namespace HarmonyHub_Backend.Controllers
 
         // PUT api/<HarmonyHubController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] MusicRecord music)
         {
+            musicRecordRepository.Update(id, music);
         }
 
         // DELETE api/<HarmonyHubController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            musicRecordRepository.Delete(id);
         }
     }
 }
