@@ -34,9 +34,18 @@ public class MusicRecordRepository
         return musicRecord;
     }
 
-    public IEnumerable<MusicRecord> Read()
+    public IEnumerable<MusicRecord> Read(string? title=null, string artist=null )
     {
         IQueryable<MusicRecord> query = MusicRecords.AsQueryable();
+
+        if ( title != null )
+        {
+            query = query.Where(m => m.Title == title);
+        }
+        if ( artist != null )
+        {
+            query = query.Where(m => m.Artist == artist);
+        }
 
         return query;
     }
