@@ -9,7 +9,12 @@ namespace HarmonyHub_Backend.Controllers
     [ApiController]
     public class HarmonyHubController : ControllerBase
     {
-        private MusicRecordRepository musicRecordRepository = new MusicRecordRepository();
+        private MusicRecordRepository musicRecordRepository;
+
+        public HarmonyHubController(MusicRecordRepository musicRecordRepository)
+        {
+            this.musicRecordRepository = musicRecordRepository;
+        }
 
         // GET: api/<HarmonyHubController>
         [HttpGet]
